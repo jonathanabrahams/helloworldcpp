@@ -1,5 +1,7 @@
 #include "Bank.h"
 
+using namespace std;
+
 namespace Bank
 {
     Bank::Bank()
@@ -15,5 +17,11 @@ namespace Bank
     Bank::~Bank()
     {
         name.clear();
+    }
+
+    ostream& operator<<(ostream& stream, const Bank& bank)
+    {
+        stream << "BANK : " << bank.getName() << endl;
+        return stream;
     }
 }

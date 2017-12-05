@@ -7,7 +7,8 @@ int main() {
 	int i ;
 	Bank::Bank bank;
 
-	cout << "Hello " << bank.getName() << endl;
+	cout << "Hello " << bank << endl;
+
 	for( i = 5 ; i > 0; i-- ) {
 		cout << "I:" << i << endl;
 	}
