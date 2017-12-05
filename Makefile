@@ -5,7 +5,7 @@ CC = g++
 LD = g++
 CFLAGS = -g -Wall
 
-BIN = ./bin
+BIN = ~/bin
 SRC = ./src
 INC = ./include
 LIB = ./lib
