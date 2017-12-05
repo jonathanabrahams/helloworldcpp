@@ -11,14 +11,14 @@ INC = ./include
 LIB = ./lib
 BUILD = ./build
 
-SRC_LST = $(SRC)/main.cpp
-OBJ_LST = $(BUILD)/main.o
+bank.o:
+	$(CC) -c $(CFLAGS) $(SRC)/Bank/Bank.cpp -o $(BUILD)/bank.o
 
-main.o :
-	$(CC) -c $(CLAGS) $(SRC_LST) -o $(OBJ_LST)
+main.o: bank.o
+	$(CC) -c $(CFLAGS) $(SRC)/main.cpp -o $(BUILD)/main.o
 
-$(PROG) : main.o
-	$(LD) $(OBJ_LST) -o $(BIN)/$@
+$(PROG): main.o bank.o
+	$(LD) $(BUILD)/main.o $(BUILD)/bank.o -o $(BIN)/$@
 
 clean: 
 	rm -f $(BIN)/$(PROG) $(BUILD)/*.o
