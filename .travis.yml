@@ -12,9 +12,7 @@ before_install:
   - pip install --user cpp-coveralls
 
 script:
-  - mkdir build
-  - cd build
-  - make
+  - make demo
   - ./demo
 
 after_success:
