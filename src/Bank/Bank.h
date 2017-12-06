@@ -9,13 +9,16 @@ namespace Bank
 {
 	class Bank
 	{
-	    public:
-		    Bank();
-		    string getName() const;
-		    ~Bank();
-
 		private:
 		    string name;
+
+	    public:
+		    Bank();
+		    Bank( string name );
+		    string getName() const;
+		    void setName( string name );
+		    ~Bank();
+
 	};
 
 	ostream& operator<<(ostream& stream, const Bank& bank);

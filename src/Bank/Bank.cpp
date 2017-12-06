@@ -9,9 +9,19 @@ namespace Bank
         name = "Banking";
     }
 
+    Bank::Bank( string name )
+    {
+        setName( name );
+    }
+
     string Bank::getName() const
     {
         return name;
+    }
+
+    void Bank::setName( string name )
+    {
+        this->name = name;
     }
 
     Bank::~Bank()
