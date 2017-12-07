@@ -11,6 +11,8 @@ INC = ./include
 LIB = ./lib
 BUILD = ./build
 TEST = ./test
+DEPS = main.o Bank.o Printer.o
+TEST_DEPS = main.o Bank.o BankTest.o
 
 GTEST_DIR = ./external/googletest/googletest
 GTEST_INC = $(GTEST_DIR)/include
@@ -23,20 +25,17 @@ gtest-all.o:
 gtest_main.o:
 	$(CC) -o $(BUILD)/$@ -c $(CFLAGS) -I$(GTEST_DIR) -I$(GTEST_INC) $(GTEST_DIR)/src/gtest_main.cc
 
-BankTest.o:
-	$(CC) -c $(CFLAGS) -I$(GTEST_INC) -I$(SRC) -o $(BUILD)/$@ $(TEST)/BankTest.cpp
+%.o: $(TEST)/%.cpp
+	$(CC) -c $(CFLAGS) -I$(GTEST_INC) -I$(SRC) -o $(BUILD)/$@ $<
 
-Bank.o:
-	$(CC) -c $(CFLAGS) -o $(BUILD)/$@ $(SRC)/Bank/Bank.cpp
+%.o: $(SRC)/Bank/%.cpp
+	$(CC) -c $(CFLAGS) -o $(BUILD)/$@ $<
 
-BankPrinter.o:
-	$(CC) -c $(CFLAGS) -o $(BUILD)/$@ $(SRC)/Bank/BankPrinter.cpp
+%.o: $(SRC)/%.cpp
+	$(CC) -c $(CFLAGS) -o $(BUILD)/$@ $<
 
-main.o: Bank.o BankPrinter.o
-	$(CC) -c $(CFLAGS) -o $(BUILD)/$@ $(SRC)/main.cpp
-
-$(PROG): main.o Bank.o BankPrinter.o
-	$(LD) $(BUILD)/main.o $(BUILD)/Bank.o $(BUILD)/BankPrinter.o -o $(BIN)/$@
+$(PROG): $(DEPS)
+	$(LD) $(patsubst %, $(BUILD)/%, $(DEPS)) -o $(BIN)/$@
 
 test.run: Bank.o BankTest.o gtest-all.o gtest_main.o
 	$(LD) -o $(BIN)/$@ $(BUILD)/gtest-all.o $(BUILD)/gtest_main.o $(BUILD)/Bank.o $(BUILD)/BankTest.o -lpthread

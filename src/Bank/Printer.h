@@ -6,17 +6,17 @@
 
 namespace Bank
 {
-	class BankPrinter
+	class Printer
 	{
 	    public:
-		    BankPrinter( Bank& bank );
+		    Printer( Bank& bank );
 		    void print( ostream& stream ) const;
 
 		private:
 		    Bank& bank;
 	};
 
-	ostream& operator<<( ostream& stream, const BankPrinter& bs );
+	ostream& operator<<( ostream& stream, const Printer& bs );
 }
 
 #endif
