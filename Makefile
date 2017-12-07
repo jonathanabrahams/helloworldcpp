@@ -15,26 +15,31 @@ TEST = ./test
 GTEST_DIR = ./external/googletest/googletest
 GTEST_INC = $(GTEST_DIR)/include
 
+all: $(PROG) test.run
+
 gtest-all.o:
 	$(CC) -o $(BUILD)/$@ -c $(CFLAGS) -I$(GTEST_DIR) -I$(GTEST_INC) $(GTEST_DIR)/src/gtest-all.cc
 
 gtest_main.o:
 	$(CC) -o $(BUILD)/$@ -c $(CFLAGS) -I$(GTEST_DIR) -I$(GTEST_INC) $(GTEST_DIR)/src/gtest_main.cc
 
-bank_test.o:
-	$(CC) -o $(BUILD)/$@ -c $(CFLAGS) -I$(GTEST_INC) -I$(SRC) $(TEST)/BankTest.cpp
+BankTest.o:
+	$(CC) -c $(CFLAGS) -I$(GTEST_INC) -I$(SRC) -o $(BUILD)/$@ $(TEST)/BankTest.cpp
 
-bank.o:
-	$(CC) -c $(CFLAGS) $(SRC)/Bank/Bank.cpp -o $(BUILD)/bank.o
+Bank.o:
+	$(CC) -c $(CFLAGS) -o $(BUILD)/$@ $(SRC)/Bank/Bank.cpp
 
-main.o: bank.o
-	$(CC) -c $(CFLAGS) $(SRC)/main.cpp -o $(BUILD)/main.o
+BankPrinter.o:
+	$(CC) -c $(CFLAGS) -o $(BUILD)/$@ $(SRC)/Bank/BankPrinter.cpp
 
-$(PROG): main.o bank.o
-	$(LD) $(BUILD)/main.o $(BUILD)/bank.o -o $(BIN)/$@
+main.o: Bank.o BankPrinter.o
+	$(CC) -c $(CFLAGS) -o $(BUILD)/$@ $(SRC)/main.cpp
 
-test.run: bank.o bank_test.o gtest-all.o gtest_main.o
-	$(LD) -o $(BIN)/$@ $(BUILD)/gtest-all.o $(BUILD)/gtest_main.o $(BUILD)/bank.o $(BUILD)/bank_test.o -lpthread
+$(PROG): main.o Bank.o BankPrinter.o
+	$(LD) $(BUILD)/main.o $(BUILD)/Bank.o $(BUILD)/BankPrinter.o -o $(BIN)/$@
+
+test.run: Bank.o BankTest.o gtest-all.o gtest_main.o
+	$(LD) -o $(BIN)/$@ $(BUILD)/gtest-all.o $(BUILD)/gtest_main.o $(BUILD)/Bank.o $(BUILD)/BankTest.o -lpthread
 
 clean: 
 	rm -f $(BIN)/$(PROG) $(BIN)/test.run $(BUILD)/*.o

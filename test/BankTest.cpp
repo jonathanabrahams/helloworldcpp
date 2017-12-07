@@ -1,21 +1,15 @@
 #include "gtest/gtest.h"
 #include "Bank/Bank.h"
 
-TEST(BankTest, Constructor)
+TEST( BankTest, constructor_with_name )
 {
-    Bank::Bank bank;
-    EXPECT_EQ( bank.getName(), "Banking" );
+    Bank::Bank bank( "Bank1" );
+    EXPECT_EQ( bank.getName(), "Bank1" );
 }
 
-TEST(BankTest, ConstructorWithName)
-{
-    Bank::Bank bank("Banking Name");
-    EXPECT_EQ( bank.getName(), "Banking Name" );
-}
-
-TEST(BankTest, SetName)
+TEST(BankTest, bank_object_set_name)
 {
     Bank::Bank bank;
-    bank.setName( "Banking Set" );
-    EXPECT_EQ( bank.getName(), "Banking Set" );
+    bank.setName( "Bank2" );
+    EXPECT_EQ( bank.getName(), "Bank2" );
 }

@@ -4,15 +4,7 @@ using namespace std;
 
 namespace Bank
 {
-    Bank::Bank()
-    {
-        name = "Banking";
-    }
-
-    Bank::Bank( string name )
-    {
-        setName( name );
-    }
+    Bank::Bank( string name ) : name( name ) { }
 
     string Bank::getName() const
     {
@@ -29,9 +21,4 @@ namespace Bank
         name.clear();
     }
 
-    ostream& operator<<(ostream& stream, const Bank& bank)
-    {
-        stream << "BANK : " << bank.getName() << endl;
-        return stream;
-    }
 }
