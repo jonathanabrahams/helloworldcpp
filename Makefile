@@ -11,8 +11,8 @@ INC = ./include
 LIB = ./lib
 BUILD = ./build
 TEST = ./test
-DEPS = main.o Bank.o Printer.o
-TEST_DEPS = main.o Bank.o BankTest.o
+DEPS = main.o Bank.o Printer.o Account.o
+TEST_DEPS = main.o Bank.o BankTest.o AccountTest.o
 
 GTEST_DIR = ./external/googletest/googletest
 GTEST_INC = $(GTEST_DIR)/include
@@ -37,8 +37,8 @@ gtest_main.o:
 $(PROG): $(DEPS)
 	$(LD) $(patsubst %, $(BUILD)/%, $(DEPS)) -o $(BIN)/$@
 
-test.run: Bank.o BankTest.o gtest-all.o gtest_main.o
-	$(LD) -o $(BIN)/$@ $(BUILD)/gtest-all.o $(BUILD)/gtest_main.o $(BUILD)/Bank.o $(BUILD)/BankTest.o -lpthread
+test.run: Bank.o BankTest.o Account.o AccountTest.o gtest-all.o gtest_main.o
+	$(LD) -o $(BIN)/$@ $(BUILD)/gtest-all.o $(BUILD)/gtest_main.o $(BUILD)/Bank.o $(BUILD)/BankTest.o $(BUILD)/Account.o $(BUILD)/AccountTest.o -lpthread
 
 clean: 
 	rm -f $(BIN)/$(PROG) $(BIN)/test.run $(BUILD)/*.o

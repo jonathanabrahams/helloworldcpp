@@ -6,7 +6,7 @@ namespace Bank
 {
     Bank::Bank( string name ) : name( name ) { }
 
-    string Bank::getName() const
+    string Bank::getName( ) const
     {
         return name;
     }
@@ -16,7 +16,7 @@ namespace Bank
         this->name = name;
     }
 
-    Bank::~Bank()
+    Bank::~Bank( )
     {
         name.clear();
     }

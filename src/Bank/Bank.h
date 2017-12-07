@@ -11,9 +11,9 @@ namespace Bank
 	{
 	    public:
 		    Bank( string name = "" );
-		    string getName() const;
+		    string getName( ) const;
 		    void setName( string name );
-		    ~Bank();
+		    ~Bank( );
 
 		private:
 		    string name;
