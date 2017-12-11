@@ -6,6 +6,16 @@ namespace Bank
 {
     Bank::Bank( string name ) : name( name ) { }
 
+    void Bank::addAccount( Account a )
+    {
+        this->accounts_.push_back( a );
+    }
+
+    vector<Account> Bank::getAccounts( )
+    {
+        return this->accounts_;
+    }
+
     string Bank::getName( ) const
     {
         return name;

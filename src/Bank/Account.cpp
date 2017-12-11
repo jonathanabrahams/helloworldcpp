@@ -10,4 +10,14 @@ namespace Bank
     {
         return name;
     }
+
+    void Account::setName( string name )
+    {
+        this->name = name;
+    }
+
+    bool Account::operator==( const Account& rhs ) const
+    {
+        return this->name == rhs.getName();
+    }
 }
