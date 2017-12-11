@@ -18,6 +18,6 @@ namespace Bank
 
     bool Account::operator==( const Account& rhs ) const
     {
-        return this->name == rhs.getName();
+        return this->getName() == rhs.getName();
     }
 }

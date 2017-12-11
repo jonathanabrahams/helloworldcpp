@@ -5,7 +5,7 @@
 
 using ::testing::ElementsAre;
 
-TEST( BankAccountTest, bank_add_account )
+TEST( BankAccountsTest, bank_add_accounts_find_account )
 {
     Bank::Bank bank( "Bank1" );
     Bank::Account account1( "Account1" );
@@ -14,7 +14,7 @@ TEST( BankAccountTest, bank_add_account )
     bank.addAccount( account1 );
     bank.addAccount( account2 );
 
-    Bank::Account account3 = bank.findAccount("Account1");
+    Bank::Account account3 = bank.getAccount("Account1");
     EXPECT_EQ( account3.getName(), "Account1" );
 
     ASSERT_THAT( bank.getAccounts(), ElementsAre( account1, account2 ) );

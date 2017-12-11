@@ -12,7 +12,7 @@ LIB = ./lib
 BUILD = ./build
 TEST = ./test
 DEPS = main.o Bank.o Account.o
-TEST_DEPS = main.o Bank.o BankTest.o AccountTest.o BankAccountTest.o
+TEST_DEPS = main.o Bank.o BankTest.o AccountTest.o BankAccountsTest.o
 
 GMOCK_DIR = ./external/googletest/googlemock
 GMOCK_INC = $(GMOCK_DIR)/include
@@ -45,8 +45,8 @@ gmock_main.o:
 $(PROG): $(DEPS)
 	$(LD) $(patsubst %, $(BUILD)/%, $(DEPS)) -o $(BIN)/$@
 
-test.run: Bank.o BankTest.o Account.o AccountTest.o BankAccountTest.o gtest-all.o gtest_main.o gmock-all.o gmock_main.o
-	$(LD) -o $(BIN)/$@ $(BUILD)/gtest-all.o $(BUILD)/gtest_main.o $(BUILD)/Bank.o $(BUILD)/BankTest.o $(BUILD)/Account.o $(BUILD)/AccountTest.o $(BUILD)/BankAccountTest.o -lpthread
+test.run: Bank.o BankTest.o Account.o AccountTest.o BankAccountsTest.o gtest-all.o gtest_main.o gmock-all.o gmock_main.o
+	$(LD) -o $(BIN)/$@ $(BUILD)/gtest-all.o $(BUILD)/gtest_main.o $(BUILD)/Bank.o $(BUILD)/BankTest.o $(BUILD)/Account.o $(BUILD)/AccountTest.o $(BUILD)/BankAccountsTest.o -lpthread
 
 clean: 
 	rm -f $(BIN)/$(PROG) $(BIN)/test.run $(BUILD)/*.o

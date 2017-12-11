@@ -16,7 +16,7 @@ namespace Bank
 		    Bank( string name = "" );
 		    void addAccount( Account a );
             vector<Account> getAccounts( );
-            Account findAccount( string name );
+            Account getAccount( string name );
 		    string getName( ) const;
 		    void setName( string name );
 		    ~Bank( );
