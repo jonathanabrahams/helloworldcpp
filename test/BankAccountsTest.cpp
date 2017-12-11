@@ -18,4 +18,6 @@ TEST( BankAccountsTest, bank_add_accounts_find_account )
     EXPECT_EQ( account3.getName(), "Account1" );
 
     ASSERT_THAT( bank.getAccounts(), ElementsAre( account1, account2 ) );
+
+    EXPECT_ANY_THROW( bank.getAccounts().at(2) );
 }
