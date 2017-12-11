@@ -2,6 +2,7 @@
 #define BANK_BANK_H
 
 #include <vector>
+#include <algorithm>
 #include <string>
 #include "Account.h"
 
@@ -15,7 +16,7 @@ namespace Bank
 		    Bank( string name = "" );
 		    void addAccount( Account a );
             vector<Account> getAccounts( );
-
+            Account findAccount( string name );
 		    string getName( ) const;
 		    void setName( string name );
 		    ~Bank( );

@@ -11,6 +11,13 @@ namespace Bank
         this->accounts_.push_back( a );
     }
 
+    Account Bank::findAccount( string name )
+    {
+        vector<Account>::iterator it = find( this->accounts_.begin(), this->accounts_.end(), name );
+
+        return *it;
+    }
+
     vector<Account> Bank::getAccounts( )
     {
         return this->accounts_;
