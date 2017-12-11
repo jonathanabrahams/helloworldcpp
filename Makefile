@@ -11,7 +11,7 @@ INC = ./include
 LIB = ./lib
 BUILD = ./build
 TEST = ./test
-DEPS = main.o Bank.o Printer.o Account.o
+DEPS = main.o Bank.o Account.o
 TEST_DEPS = main.o Bank.o BankTest.o AccountTest.o
 
 GTEST_DIR = ./external/googletest/googletest

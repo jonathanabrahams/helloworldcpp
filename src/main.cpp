@@ -1,8 +1,8 @@
 #include <iostream>
 
 #include "Bank/Bank.h"
-#include "Bank/Printer.h"
 #include "Bank/Account.h"
+#include "Bank/Printer.tpp"
 
 using namespace std;
 
@@ -11,8 +11,8 @@ int main() {
 	Bank::Bank bank( "Bank" );
     Bank::Account account( "Account" );
 
-    cout << Bank::Printer( bank ) << endl;
-    cout << account.getName() << endl;
+    cout << Bank::Printer<Bank::Bank>(bank) << endl;
+    cout << Bank::Printer<Bank::Account>(account) << endl;
 
 	for( i = 5 ; i > 0; i-- ) {
 		cout << "I:" << i << endl;
