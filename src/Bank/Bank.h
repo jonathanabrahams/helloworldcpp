@@ -15,8 +15,8 @@ namespace Bank
 	    public:
 		    Bank( string name = "" );
 		    void addAccount( Account a );
-            vector<Account> getAccounts( );
-            Account getAccount( string name );
+            vector<Account>& getAccounts( );
+            Account& getAccount( string name );
 		    string getName( ) const;
 		    void setName( string name );
 		    ~Bank( );
