@@ -7,9 +7,11 @@ addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
+      - libboost-all-dev
 
 script:
-  - make test.run
+  - make
+  - ~/bin/demo
   - ~/bin/test.run
 
 notifications:

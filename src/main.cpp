@@ -4,9 +4,16 @@
 #include "Bank/Account.h"
 #include "Bank/Printer.tpp"
 
+#include "boost/uuid/uuid.hpp"            // uuid class
+#include "boost/uuid/uuid_generators.hpp" // generators
+#include "boost/uuid/uuid_io.hpp"         // streaming operators etc.
+
 using namespace std;
 
 int main() {
+    boost::uuids::uuid uuid = boost::uuids::random_generator()();
+    std::cout << uuid << std::endl;
+
 	int i ;
 	Bank::Bank bank( "Bank" );
     Bank::Account account( "Account" );
