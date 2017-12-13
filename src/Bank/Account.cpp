@@ -6,6 +6,8 @@ namespace Bank
 {
     Account::Account( ) : Object () {}
 
+    Account::Account( uuid id ) : Object ( id ) {}
+
     Account::Account( string name ) : name( name ) { }
 
     string Account::getName( ) const

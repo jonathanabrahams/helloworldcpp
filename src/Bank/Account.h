@@ -12,6 +12,7 @@ namespace Bank
     {
         public:
             Account( );
+            Account( uuid id );
             Account( string name );
             string getName( ) const;
             void setName( string name );

@@ -13,6 +13,7 @@ namespace Bank
 
         public:
             Object( );
+            Object( uuid id );
             uuid getId() const;
 
         private:

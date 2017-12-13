@@ -15,6 +15,7 @@ namespace Bank
 	{
 	    public:
 	        Bank( );
+	        Bank( uuid id );
 		    Bank( string name );
 		    void addAccount( Account a );
             vector<Account>& getAccounts( );

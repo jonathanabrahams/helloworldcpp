@@ -6,6 +6,8 @@ namespace Bank
 {
     Bank::Bank() : Object() {}
 
+    Bank::Bank( uuid id ) : Object( id ) {}
+
     Bank::Bank( string name ) : Object() , name( name ) { }
 
     void Bank::addAccount( Account a )
