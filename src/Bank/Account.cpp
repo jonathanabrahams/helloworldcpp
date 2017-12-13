@@ -4,6 +4,8 @@ using namespace std;
 
 namespace Bank
 {
+    Account::Account( ) : Object () {}
+
     Account::Account( string name ) : name( name ) { }
 
     string Account::getName( ) const

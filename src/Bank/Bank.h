@@ -5,15 +5,17 @@
 #include <algorithm>
 #include <string>
 #include "Account.h"
+#include "Object.h"
 
 using namespace std;
 
 namespace Bank
 {
-	class Bank
+	class Bank : public Object
 	{
 	    public:
-		    Bank( string name = "" );
+	        Bank( );
+		    Bank( string name );
 		    void addAccount( Account a );
             vector<Account>& getAccounts( );
             Account& getAccount( string name );

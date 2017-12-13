@@ -20,7 +20,7 @@ namespace Bank {
     template <class T>
     void Printer<T>::stream( std::ostream& s ) const
     {
-        s << var_.getName();
+        s << var_.getName() << "[" << var_.getId() << "]";
     };
 
     template <class T>

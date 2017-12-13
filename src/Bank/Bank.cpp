@@ -4,7 +4,9 @@ using namespace std;
 
 namespace Bank
 {
-    Bank::Bank( string name ) : name( name ) { }
+    Bank::Bank() : Object() {}
+
+    Bank::Bank( string name ) : Object() , name( name ) { }
 
     void Bank::addAccount( Account a )
     {

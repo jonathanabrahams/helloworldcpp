@@ -1,16 +1,18 @@
 #ifndef BANK_ACCOUNT_H
 #define BANK_ACCOUNT_H
 
+#include "Object.h"
 #include <string>
 
 using namespace std;
 
 namespace Bank
 {
-    class Account
+    class Account : public Object
     {
         public:
-            Account( string name = "" );
+            Account( );
+            Account( string name );
             string getName( ) const;
             void setName( string name );
             bool operator==( const Account& rhs) const;
