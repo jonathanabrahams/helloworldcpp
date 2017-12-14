@@ -12,7 +12,7 @@ using namespace std;
 
 int main() {
     boost::uuids::string_generator gen;
-    boost::uuids::uuid uuid = gen(string("0123456789abcdef0123456789abcdef"));
+    boost::uuids::uuid uuid = gen(string("00000000-0123-0123-0123-0123456789AB"));
     std::cout << uuid << std::endl;
 
 	int i ;
