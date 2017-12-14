@@ -11,7 +11,8 @@
 using namespace std;
 
 int main() {
-    boost::uuids::uuid uuid = boost::uuids::random_generator()();
+    boost::uuids::string_generator gen;
+    boost::uuids::uuid uuid = gen(string("0123456789abcdef0123456789abcdef"));
     std::cout << uuid << std::endl;
 
 	int i ;
